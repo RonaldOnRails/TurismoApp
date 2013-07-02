@@ -1,0 +1,27 @@
+<%= simple_form_for(@servico_pacote) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :dataInicio %>
+    <%= f.input :dataRetorno %>
+    <%= f.input :destino %>
+    <%= f.input :localSaida %>
+    <%= f.input :nomeTrans %>
+    <%= f.input :veiculo %>
+    <%= f.input :cnpjTrans, :input_html => {:id=>"cnpj"} %>
+    <%= f.input :precoTrans %>
+    <%= f.input :nomeHotel %>
+    <%= f.input :cnpjHotel, :input_html => {:id=>"cnpj"} %>
+    <%= f.input :descHotel %>
+    <%= f.input :descQuarto %>
+    <%= f.input :precoHotel %>
+    <%= f.input :descPacote %>
+    <%= f.input :precoPacote %>
+    <%= f.select :status, :collection => [:Ativo, :Inativo, :Andamento, :Parado, :Concluido] %>
+
+  </div>
+
+  <div class="actions">
+     <%= f.submit "create"%>
+  </div>
+<% end %>

@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @pessoa_fisica.nome %>
+</p>
+
+<p>
+  <strong>Sobrenome:</strong>
+  <%= @pessoa_fisica.sobrenome %>
+</p>
+
+<p>
+  <strong>Datanasc:</strong>
+  <%= @pessoa_fisica.dataNasc %>
+</p>
+
+<p>
+  <strong>Sexo:</strong>
+  <%= @pessoa_fisica.sexo %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @pessoa_fisica.telefone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @pessoa_fisica.email %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @pessoa_fisica.cpf %>
+</p>
+
+<p>
+  <strong>Rg:</strong>
+  <%= @pessoa_fisica.rg %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @pessoa_fisica.facebook %>
+</p>
+
+<p>
+  <strong>Recebe email:</strong>
+  <%= @pessoa_fisica.recebe_email %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @pessoa_fisica.status %>
+</p>
+
+<p>
+  <strong>Nrocompra:</strong>
+  <%= @pessoa_fisica.nroCompra %>
+</p>
+
+<%= link_to 'Edit', edit_pessoa_fisica_path(@pessoa_fisica) %> |
+<%= link_to 'Back', pessoa_fisicas_path %>

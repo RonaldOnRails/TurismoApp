@@ -1,0 +1,34 @@
+<h1>Listing servico_cruzeiros</h1>
+
+<table id="tabelaData" class="display">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Navio</th>
+      <th>Empresa</th>
+      <th>CNPJ</th>
+      <th>Trajetória</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servico_cruzeiros.each do |servico_cruzeiro| %>
+      <tr>
+       
+        <td><%= link_to  servico_cruzeiro.id, servico_cruzeiro %></td>
+        <td><%= servico_cruzeiro.nomeNavio %></td>
+        <td><%= servico_cruzeiro.empresaNavio %></td>
+        <td><%= servico_cruzeiro.empresaCnpj %></td>
+        <td><%= servico_cruzeiro.trajetoria %></td>
+        <td><%= servico_cruzeiro.status %></td>
+        <td><%= link_to 'Destroy', servico_cruzeiro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cruzeiro', new_servico_cruzeiro_path %>

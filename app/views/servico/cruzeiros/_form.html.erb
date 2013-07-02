@@ -1,0 +1,24 @@
+<%= simple_form_for(@servico_cruzeiro) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :dataInicio %>
+    <%= f.input :dataRetorno %>
+    <%= f.input :trajetoria %>
+    <%= f.input :localSaida %>
+    <%= f.input :nomeNavio %>
+    <%= f.input :empresaNavio %>
+    <%= f.input :empresaCnpj, :input_html => {:id=>"cnpj"} %>
+    <%= f.input :descQuarto %>
+    <%= f.input :precoQuarto %>
+    <%= f.input :descCruzeiro %>
+    <%= f.input :precoTotal %>
+    <%= f.input :nroQuartos %>
+    <%= f.input :internacional %>
+    <%= f.select :status, :collection => [:Ativo, :Inativo, :Andamento, :Parado, :Concluido] %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "create"%>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<h1>Listing servico_eventos</h1>
+
+<table id="tabelaData" class="display">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Destino</th>
+      <th>Numero Lugares</th>
+      <th>Preco</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servico_eventos.each do |servico_evento| %>
+      <tr>
+        <td><%= link_to servico_evento.id, servico_evento %></td>
+        <td><%= servico_evento.destino %></td>
+        <td><%= servico_evento.nroLugares %></td>
+        <td><%= servico_evento.precoTotal %></td>
+        <td><%= servico_evento.status %></td>
+        <td><%= link_to 'Destroy', servico_evento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Evento', new_servico_evento_path %>

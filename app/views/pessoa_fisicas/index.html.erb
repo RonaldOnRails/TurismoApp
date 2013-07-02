@@ -1,0 +1,31 @@
+<h1>Listing pessoa_fisicas</h1>
+
+<table id="tabelaData" class="display">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Cpf</th>
+      <th>status</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pessoa_fisicas.each do |pessoa_fisica| %>
+      <tr>
+        <td><%=  link_to pessoa_fisica.id, edit_pessoa_fisica_path(pessoa_fisica.id) %></td>
+        <td><%= pessoa_fisica.nome %></td>
+        <td><%= pessoa_fisica.email %></td>
+        <td><%= pessoa_fisica.cpf %></td>
+        <td><%= pessoa_fisica.status %></td>
+        <td><%= link_to 'Deleta', pessoa_fisica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pessoa fisica', new_pessoa_fisica_path %>

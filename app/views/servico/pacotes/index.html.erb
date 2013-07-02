@@ -1,0 +1,29 @@
+<h1>Listing servico_pacotes</h1>
+
+<table id="tabelaData" class="display">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Destino</th>
+      <th>Preço</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servico_pacotes.each do |servico_pacote| %>
+      <tr>
+        <td><%= link_to servico_pacote.id, edit_servico_pacote_path(servico_pacote.id) %></td>
+        <td><%= servico_pacote.destino %></td>
+        <td><%= servico_pacote.precoPacote %></td>
+        <td><%= servico_pacote.status %></td>
+        <td><%= link_to 'Show', servico_pacote %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pacote', new_servico_pacote_path %>

@@ -1,0 +1,52 @@
+<h2>Cadastrar</h2>
+
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :email, :required => true, :autofocus => true %>
+    <%= f.input :password, :required => true %>
+    <%= f.input :password_confirmation, :required => true %>
+    <%= f.select :is_admin, :collection => [:Sim, :Nao] %>
+    <%= f.select :status, :collection => [:Ativo, :Inativo, :Desativado, :Cancelado] %>
+    <%= f.simple_fields_for :profile do |f2| %>
+      <%=f2.input :nome%>
+      <%=f2.input :cpf, :input_html => {:id=>"cpf"}%>
+      <%=f2.input :dataNasc%>
+      <%=f2.input :tel%>
+      <%= f2.select :sexo, :collection => [:Masculino, :Feminino] %>
+      <%= f2.input :rg %>
+
+
+      <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
+        <table align="center" height="15" cellspacing="20"  >
+          <tr>
+          <tr>
+            <td align="center" bgcolor="#ECECEC" height="25" colspan="4" ><span style="font-weight: bold;">Endereço</span></td>
+          </tr>
+          <tr >
+            <%= f2.simple_fields_for :endereco do |f3| %>
+              <td><%= f3.input :cep, :as=> :string, :input_html => {:id=>"cep",  :onBlur=> "getEndereco()"}%></td>
+              <td> <%= f3.input :pais, :input_html => {:id=>"pais", :readonly=>"true"}  %></td>
+              <td> <%= f3.input :estado, :input_html => {:id=>"estado", :readonly=>"true"} %></td>
+              <td> <%= f3.input :cidade, :input_html => {:id=>"cidade", :readonly=>"true"}  %></td>
+            </tr>
+            <tr>
+              <td><%= f3.input :endereco, :input_html => {:id=>"endereco", :readonly=>"true"}  %></td>
+              <td><%= f3.input :numero, :as=> :string %></td>
+              <td><%= f3.input :complemento %></td>
+              <td><%= f3.input :bairro, :input_html => {:id=>"bairro", :readonly=>"true"} %></td>
+            <%end%>
+          </tr>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  <%end%>
+  <div class="actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
+
+

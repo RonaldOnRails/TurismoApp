@@ -1,0 +1,48 @@
+<section class="formulario">
+  <%= simple_form_for(@pessoa_juridica) do |f| %>
+    <% if @pessoa_juridica.errors.any? %>
+        <h2>*Campos Obrigatorios</h2>
+          <% end %>
+        <%= f.input :nome %>
+    <%= f.input :cnpj, :input_html => {:id=>"cnpj"} %>
+    <%= f.input :email %>
+    <%= f.input :nomeResp %>
+    <%= f.input :cargo %>
+    <%= f.input :cpf, :input_html => {:id=>"cpf"} %>
+    <%= f.input :telefone %>
+    <%= f.input :observacao %>
+    <%= f.input :recebe_email %>
+    <%= f.select :status, :collection => [:Ativo, :Inativo, :Desativado, :Cancelado] %>
+  
+    <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
+      <table align="center" height="15" cellspacing="20"  >
+        <tr>
+        <tr>
+          <td align="center" bgcolor="#ECECEC" height="25" colspan="4" ><span style="font-weight: bold;">Endereço</span></td>
+        </tr>
+        <tr >
+          <%= f.simple_fields_for :endereco do |f2| %>
+            <td><%= f2.input :cep, :as=> :string, :input_html => {:id=>"cep",  :onBlur=> "getEndereco()"}%></td>
+            <td> <%= f2.input :pais, :input_html => {:id=>"pais", :readonly=>"true"}  %></td>
+            <td> <%= f2.input :estado, :input_html => {:id=>"estado", :readonly=>"true"} %></td>
+            <td> <%= f2.input :cidade, :input_html => {:id=>"cidade", :readonly=>"true"}  %></td>
+          </tr>
+          <tr>
+            <td><%= f2.input :endereco, :input_html => {:id=>"endereco", :readonly=>"true"}  %></td>
+            <td><%= f2.input :numero, :as=> :string %></td>
+            <td><%= f2.input :complemento %></td>
+            <td><%= f2.input :bairro, :input_html => {:id=>"bairro", :readonly=>"true"} %></td>
+          <%end%>
+        </tr>
+        </tr>
+      </table>
+    </div>
+
+   
+    <%= f.input :recebe_email %><br />
+
+    <div id="Sub">
+      <%= f.submit "create"%>
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  data_venda: 2013-06-30 17:34:20
+  forma_pagamento: 1
+  status: 1
+  tipo_cliente: false
+  valor_total: 1.5
+
+two:
+  data_venda: 2013-06-30 17:34:20
+  forma_pagamento: 1
+  status: 1
+  tipo_cliente: false
+  valor_total: 1.5

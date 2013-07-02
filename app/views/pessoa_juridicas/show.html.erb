@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @user.nome %>
+</p>
+
+<p>
+  <strong>Cnpj:</strong>
+  <%= @user.cnpj %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Nomeresp:</strong>
+  <%= @user.nomeResp %>
+</p>
+
+<p>
+  <strong>Cargo:</strong>
+  <%= @user.cargo %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @user.cpf %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @user.telefone %>
+</p>
+
+<p>
+  <strong>Observacao:</strong>
+  <%= @user.observacao %>
+</p>
+
+<p>
+  <strong>Recebe email:</strong>
+  <%= @user.recebe_email %>
+</p>
+
+<p>
+  <strong>Nrocompra:</strong>
+  <%= @user.nroCompra %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @user.status %>
+</p>
+
+<%= link_to 'Edit', edit_pessoa_juridica_path(@user) %> |
+<%= link_to 'Back', pessoa_juridicas_path %>

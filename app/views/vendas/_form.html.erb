@@ -1,0 +1,79 @@
+<%= simple_form_for(@venda) do |f| %>
+  <% if @venda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@venda.errors.count, "error") %> prohibited this venda from being saved:</h2>
+
+      <ul>
+      <% @venda.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data_venda %><br>
+    <%= f.datetime_select :data_venda, :required => true ,:start_year=> (Date.current.year) ,:end_year => (Date.current.year), :order => [:day, :month, :year],:use_month_names=>["Janeiro" ,"Fevereiro", "Marco", "Abril" ,"Maio", "Junho","Julho", "Agosto","Setembro", "Outubro", "Novembro", "Dezembro" ] %>
+  </div>
+<br>
+  <div id="tipo_cliente" class="field" onchange="showDivPessoa()">
+     <%= f.label :tipo_cliente, "Tipo de Cliente:" %><br>
+     <%= f.radio_button :tipo_cliente, 1%>Pessoa Fisica<br>
+     <%= f.radio_button :tipo_cliente, 0%>Pessoa Juridica<br>
+  </div>
+
+  <div class="field">
+    <div id="pessoa_fisica" style="display:none">
+      <b>Pessoa Fisica:<b/>
+      <%= f.collection_select :pessoa_fisica_id, PessoaFisica.all, :id, :nome, :prompt => true %>
+    </div>
+    <div id="pessoa_juridica" style="display:none">
+      <b>Pessoa Juridica:<b/>
+      <%= f.collection_select :pessoa_juridica_id, PessoaJuridica.all, :id, :nome, :prompt => true %>
+    </div>
+  </div>
+<br>
+  <div class="field">
+    <%= f.label :valor_total %><br>
+    <%= f.number_field :valor_total %>
+  </div>
+<br>
+  <div id="services_type" class="field" onchange="showDivServico()">
+     <%= f.label :services_type, "Tipo de Servico:" %><br>
+     <%= f.radio_button :services_type, 1%>Cruzeiro<br>
+     <%= f.radio_button :services_type, 2%>Evento<br>
+     <%= f.radio_button :services_type, 3%>Pacote<br>
+     <%= f.radio_button :services_type, 4%>Passeio<br>
+  </div>
+
+    <div class="field">
+    <div id="cruzeiro" style="display:none">
+      <b>Cruzeiros:<b/>
+      <%= f.collection_select :services_id, Servico::Cruzeiro.all, :id, :nomeNavio, :prompt => true %>
+    </div>
+    <div id="evento" style="display:none">
+      <b>Eventos:<b/>
+      <%= f.collection_select :services_id, Servico::Evento.all, :id, :nomeEvento, :prompt => true %>
+    </div>
+    <div id="pacote" style="display:none">
+      <b>Pacotes:<b/>
+      <%= f.collection_select :services_id, Servico::Pacote.all, :id, :nomeHotel, :prompt => true %>
+    </div>
+    <div id="passeio" style="display:none">
+      <b>Passeios:<b/>
+      <%= f.collection_select :services_id, Servico::Passeio.all, :id, :destino, :prompt => true %>
+    </div>
+  </div>
+<br>
+  <div class="field">
+    <%= f.label :forma_pagamento, "Forma de Pagamento:" %><br>
+    <%= f.radio_button :forma_pagamento, 1%>Boleto<br>
+    <%= f.radio_button :forma_pagamento, 2%>MasterCard<br>
+    <%= f.radio_button :forma_pagamento, 3%>Visa<br>
+    <%= f.radio_button :forma_pagamento, 4%>PayPal<br>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "Realizar Venda" %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Listing servico_passeios</h1>
+
+<table id="tabelaData" class="display">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Destino</th>
+      <th>Preco</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servico_passeios.each do |servico_passeio| %>
+      <tr>
+        <td><%= link_to servico_passeio.id, servico_passeio %></td>
+        <td><%= servico_passeio.destino %></td>
+        <td><%= servico_passeio.precoTotal %></td>
+        <td><%= servico_passeio.status %></td>
+        <td><%= link_to 'Show', servico_passeio %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Passeio', new_servico_passeio_path %>

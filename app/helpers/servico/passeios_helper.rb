@@ -1,0 +1,2 @@
+module Servico::PasseiosHelper
+end

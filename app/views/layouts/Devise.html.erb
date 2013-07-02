@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Agencia Turismo</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jquery.maskedinput" %>  
+    <%= csrf_meta_tags %>
+
+  </head>
+  <body>
+    <div id="pagina">
+      <header class="header-body">
+        <div class="logo">Agencia </div>
+        <nav class="login-box">
+          <% if user_signed_in? %>
+            Login <%= current_user.email %>
+            <%= link_to "Sair", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to "Sign up", new_user_path %>
+            <%= link_to "Sign in", new_user_session_path %>
+          <% end %>
+        </nav>
+      </header>
+
+
+      <div id="conteudo">
+        <div class="flash">
+          <% flash.each do |type, message| -%>
+            <div class="message <%= type %>">
+              <p><%= message %></p>
+            </div>
+          <% end -%>
+        </div>
+        <%= yield %>
+
+      </div>
+
+
+      <footer id="footer-body">
+        <div align="center"><sub>Felipe Augusto Feichas</sub></div>
+      </footer>
+
+    </div>
+  </body>
+</html>

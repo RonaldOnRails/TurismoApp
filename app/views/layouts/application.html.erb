@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Agencia de Turismo</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jquery.maskedinput" %>  
+    <%= csrf_meta_tags %>
+
+  </head>
+  <body>
+    <div id="pagina">
+      <header class="header-body">
+        <div class="logo">Agencia</div>
+        <nav class="login-box">
+          <% if user_signed_in? %>
+            Login <%= current_user.email %>
+            <%= link_to "Sair", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <%#= link_to "Sign up", new_user_path %>
+            <%= link_to "Sign in", new_user_session_path %>
+          <% end %>
+        </nav>
+      </header>
+           <div id='cssmenu'>
+          <ul>
+            <li><a href='#'><span>Principal</span></a></li>
+            <li class='active has-sub'><a href='#'><span>Cliente</span></a>
+              <ul>
+                <li class='has-sub'><%= link_to 'Pessoa Físicas', pessoa_fisicas_path%></a>
+                  <ul>
+                    <li><%=link_to "Inserir", new_pessoa_fisica_path%></li>
+                    <li class='last'><%= link_to 'Consulta', pessoa_fisicas_path%></li>
+                  </ul>
+                </li>
+                <li class='has-sub'><%= link_to 'Pessoa Jurídicas', pessoa_juridicas_path %>
+                  <ul>
+                    <li><%=link_to "Inserir", new_pessoa_juridica_path%></li>
+                    <li class='last'><%= link_to "Consulta", pessoa_juridicas_path %></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class='active has-sub'><a href='#'><span>Serviços</span></a>
+              <ul>
+                <li class='has-sub'><%= link_to 'Cruzeiros', servico_cruzeiros_path %></a>
+                  <ul>
+                    <li><%= link_to 'Insere', new_servico_cruzeiro_path %></li>
+                    <li class='last'><%=link_to 'Consulta', servico_cruzeiros_path%></li>
+                  </ul>
+                </li>
+                <li class='has-sub'><%= link_to 'Passeio Turistico', servico_passeios_path %></a>
+                  <ul>
+                    <li><%= link_to 'Inserir', new_servico_passeio_path%></li>
+                    <li class='last'><%= link_to 'Consulta', servico_passeios_path %></li>
+                  </ul>
+                </li>
+                <li class='has-sub'><%= link_to 'Pacote', servico_pacotes_path %></a>
+                  <ul>
+                    <li><%= link_to 'Inserir', new_servico_pacote_path %></li>
+                    <li class='last'><%= link_to 'Consulta', servico_pacotes_path %></li>
+                  </ul>
+                </li>
+                  <li class='has-sub'><%= link_to 'Eventos', servico_eventos_path %></a>
+                  <ul>
+                    <li><%= link_to 'Inserir', new_servico_evento_path %></li>
+                    <li class='last'><%= link_to 'Consulta', servico_eventos_path %></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            
+            <li><a href='#'><span>Vendas</span></a></li>
+            <li class='active has-sub'><a href='#'><span>Funcionários</span></a>
+              <ul>
+                <li>   <%= link_to "Inserir", new_user_path %><br />
+                 
+                </li>
+                    <li class='last'> <%= link_to "Consulta", users_path%></li>
+              </ul>
+            </li>
+            <li class='last'><a href='#'><span>Suporte</span></a></li>
+          </ul>
+        </div>
+        </ul>
+      </div>
+
+    <div id="conteudo">
+                   <%= yield %>
+
+      </div>
+
+
+      <footer id="footer-body">
+        <div align="center"><sub>SATW – Sistema Agencia de Turismo Web</sub></div>
+      </footer>
+
+    </div>
+  </body>
+</html>

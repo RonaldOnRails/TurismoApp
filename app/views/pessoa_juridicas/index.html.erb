@@ -1,0 +1,33 @@
+<h1>Listing pessoa_juridicas</h1>
+
+<table id="tabelaData" class="display">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nome</th>
+      <th>Cnpj</th>
+      <th>Email</th>
+      <th>Responsável</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pessoa_juridicas.each do |pessoa_juridica| %>
+      <tr>
+        <td><%= link_to pessoa_juridica.id, edit_pessoa_juridica_path(pessoa_juridica.id) %></td>
+        <td><%= pessoa_juridica.nome %></td>
+        <td><%= pessoa_juridica.cnpj %></td>
+        <td><%= pessoa_juridica.email %></td>
+        <td><%= pessoa_juridica.nomeResp %></td>
+        <td><%= pessoa_juridica.status %></td>
+        <td><%= link_to 'Destroy', pessoa_juridica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pessoa juridica', new_pessoa_juridica_path %>

@@ -1,0 +1,23 @@
+<%= simple_form_for(@servico_passeio) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :dataInicio %>
+    <%= f.input :dataRetorno %>
+    <%= f.input :destino %>
+    <%= f.input :localSaida %>
+    <%= f.input :nomeTrans %>
+    <%= f.input :veiculo %>
+    <%= f.input :cnpjTrans %>
+    <%= f.input :precoTrans %>
+    <%= f.input :descPasseio %>
+    <%= f.input :precoTotal %>
+    <%= f.input :internacional %>
+   <%= f.select :status, :collection => [:Ativo, :Inativo, :Andamento, :Parado, :Concluido] %>
+
+  </div>
+
+  <div class="actions">
+     <%= f.submit "create"%>
+  </div>
+<% end %>

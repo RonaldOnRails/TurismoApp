@@ -1,0 +1,26 @@
+<%= simple_form_for(@servico_evento) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :dataInicio %>
+    <%= f.input :dataRetorno %>
+    <%= f.input :destino %>
+    <%= f.input :localSaida %>
+    <%= f.input :nomeTrans %>
+    <%= f.input :veiculo %>
+    <%= f.input :cnpjTrans :input_html => {:id=>"cnpj"}%>
+    <%= f.input :precoTrans %>
+    <%= f.input :descEvento %>
+    <%= f.input :nomeEvento %>
+    <%= f.input :precoConvite %>
+    <%= f.input :nroLugares %>
+    <%= f.input :precoTotal %>
+    <%= f.input :internacional %>
+    <%= f.select :status, :collection => [:Ativo, :Inativo, :Andamento, :Parado, :Concluido] %>
+
+  </div>
+
+  <div class="actions">
+     <%= f.submit "create"%>
+  </div>
+<% end %>

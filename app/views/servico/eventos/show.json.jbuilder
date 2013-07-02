@@ -1,0 +1,1 @@
+json.extract! @servico_evento, :dataInicio, :dataRetorno, :destino, :localSaida, :nomeTrans, :veiculo, :cnpjTrans, :precoTrans, :descEvento, :nomeEvento, :precoConvite, :nroLugares, :precoTotal, :internacional, :status, :created_at, :updated_at

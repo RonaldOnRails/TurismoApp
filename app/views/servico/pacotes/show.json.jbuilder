@@ -1,0 +1,1 @@
+json.extract! @servico_pacote, :dataInicio, :dataRetorno, :destino, :localSaida, :nomeTrans, :veiculo, :cnpjTrans, :precoTrans, :nomeHotel, :cnpjHotel, :descHotel, :descQuarto, :precoHotel, :descPacote, :precoPacote, :status, :created_at, :updated_at

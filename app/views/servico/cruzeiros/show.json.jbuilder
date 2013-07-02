@@ -1,0 +1,1 @@
+json.extract! @servico_cruzeiro, :dataInicio, :dataRetorno, :trajetoria, :localSaida, :nomeNavio, :empresaNavio, :empresaCnpj, :descQuarto, :precoQuarto, :descCruzeiro, :precoTotal, :nroQuartos, :internacional, :status, :created_at, :updated_at
