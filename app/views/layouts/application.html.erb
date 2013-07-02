@@ -69,8 +69,25 @@
                 </li>
               </ul>
             </li>
-            
-            <li><a href='#'><span>Vendas</span></a></li>
+            <li class='active has-sub'><a href='#'><span>Vendas</span></a>
+               <ul>
+                <li class='has-sub'><%= link_to 'Operacoes', '' %></a>
+                  <ul>
+                    <li><%= link_to 'Realizar Venda', new_venda_url %></li>
+                    <li class='last'><%=link_to 'Consultar Vendas', vendas_url%></li>
+                  </ul>
+                </li>
+                <li class='has-sub'><%= link_to 'Relatorios', vendas_url %></a>
+                  <ul>
+                    <li><%= link_to 'Por Cliente', relatorio_por_cliente_url %></li>
+                    <li class='last'><%= link_to 'Por Servico', vendas_url %></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+
+
             <li class='active has-sub'><a href='#'><span>Funcionários</span></a>
               <ul>
                 <li>   <%= link_to "Inserir", new_user_path %><br />

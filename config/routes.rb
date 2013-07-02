@@ -1,8 +1,5 @@
 TurismoApp::Application.routes.draw do
 
-
-  resources :vendas
-
   namespace :servico do
     resources :eventos
   end
@@ -22,7 +19,12 @@ TurismoApp::Application.routes.draw do
   resources :pessoa_juridicas
   devise_for :users
 
+  resources :vendas
+  get '/relatorio_por_cliente' => 'vendas#relatorio_por_cliente'
   resources :users
+
+  #get '/vendas/:relatorio_por_cliente', :controller=>"vendas", :action=>"relatorio_por_cliente"
+  #get '/vendas/:relatorio_por_servico', :controller=>"vendas", :action=>"relatorio_por_servico"
 
   #devise_for :users, :controllers => { :registrations => "registrations" } do
   #  get "cadastro/:tipo" => 'registrations#new'
