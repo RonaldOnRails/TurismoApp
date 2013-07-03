@@ -58,6 +58,51 @@ function getEndereco() {
 		else
 			objDiv.style.display = "none";
 	}
+ /*       
+ jQuery(function($) {
+	$("#date").mask("99/99/9999");
+	$("#cpf").mask("999.999.999-99")
+	$("#tin").mask("99-9999999");
+	$("#ssn").mask("999-99-9999");
+	$("#cnpj").mask("99.999.999/9999-99")
+	$("#cep").mask("99.999-999")
+	
+});
+*/
+
+	
+function getEndereco() {
+    if ($.trim($("#cep").val()) != "") {
+  
+      $("#lbcep").html(" Pesquisando...")
+
+      $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val(), function(){
+     
+    if(resultadoCEP["resultado"]){
+        $("#endereco_tipo").val(unescape(resultadoCEP["tipo_logradouro"]));
+        $("#endereco").val(unescape(resultadoCEP["logradouro"]));
+        $("#bairro").val(unescape(resultadoCEP["bairro"]));
+        $("#cidade").val(unescape(resultadoCEP["cidade"]));
+        $("#estado").val(unescape(resultadoCEP["uf"]));
+        $("#pais").val(unescape("Brasil"));
+        $("#endereco_numero").focus();
+       } else {
+          alert("Cep não encontrado.");
+       }
+       $("#lbcep").html(" CEP")});
+    }
+    else {
+        alert("Informe um cep.");
+    }
+}
+
+	function showDiv(id, value) {
+		objDiv = document.getElementById(id);
+		if (value)
+			objDiv.style.display = "";
+		else
+			objDiv.style.display = "none";
+	}
 
   function showDivPessoa() {
     radioFisica = document.getElementById("venda_tipo_cliente_1");
@@ -107,8 +152,7 @@ function getEndereco() {
       divPasseio.style.display = "";
     }
   }
-
-        
+       
    /*     
         var input = 0; 
 function mais() { 

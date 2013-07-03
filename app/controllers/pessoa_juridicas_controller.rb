@@ -14,8 +14,8 @@ class PessoaJuridicasController < ApplicationController
 
   # GET /pessoa_juridicas/new
   def new
-    @user = PessoaJuridica.new
-    @user.endereco = Endereco.new
+    @pessoa_juridica = PessoaJuridica.new
+    @pessoa_juridica.endereco = Endereco.new
   end
 
   # GET /pessoa_juridicas/1/edit
@@ -25,15 +25,15 @@ class PessoaJuridicasController < ApplicationController
   # POST /pessoa_juridicas
   # POST /pessoa_juridicas.json
   def create
-    @user = PessoaJuridica.new(pessoa_juridica_params)
+    @pessoa_juridica = PessoaJuridica.new(pessoa_juridica_params)
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'Pessoa juridica was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
+      if @pessoa_juridica.save
+        format.html { redirect_to @pessoa_juridica, notice: 'Pessoa juridica was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @pessoa_juridica }
       else
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @pessoa_juridica.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,12 +42,12 @@ class PessoaJuridicasController < ApplicationController
   # PATCH/PUT /pessoa_juridicas/1.json
   def update
     respond_to do |format|
-      if @user.update(pessoa_juridica_params)
-        format.html { redirect_to @user, notice: 'Pessoa juridica was successfully updated.' }
+      if @pessoa_juridica.update(pessoa_juridica_params)
+        format.html { redirect_to @pessoa_juridica, notice: 'Pessoa juridica was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @pessoa_juridica.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,7 +55,7 @@ class PessoaJuridicasController < ApplicationController
   # DELETE /pessoa_juridicas/1
   # DELETE /pessoa_juridicas/1.json
   def destroy
-    @user.destroy
+    @pessoa_juridica.destroy
     respond_to do |format|
       format.html { redirect_to pessoa_juridicas_url }
       format.json { head :no_content }
@@ -65,7 +65,7 @@ class PessoaJuridicasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pessoa_juridica
-      @user = PessoaJuridica.find(params[:id])
+      @pessoa_juridica = PessoaJuridica.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

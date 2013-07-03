@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dataInicio: 2013-06-04 21:21:56
+  dataRetorno: 2013-06-04 21:21:56
+  destino: MyString
+  localSaida: MyString
+  nomeTrans: MyString
+  veiculo: MyString
+  cnpjTrans: MyString
+  precoTrans: 
+  nomeHotel: MyString
+  cnpjHotel: MyString
+  descHotel: MyText
+  descQuarto: MyText
+  precoHotel: 
+  descPacote: MyText
+  precoPacote: 
+  status: MyString
+
+two:
+  dataInicio: 2013-06-04 21:21:56
+  dataRetorno: 2013-06-04 21:21:56
+  destino: MyString
+  localSaida: MyString
+  nomeTrans: MyString
+  veiculo: MyString
+  cnpjTrans: MyString
+  precoTrans: 
+  nomeHotel: MyString
+  cnpjHotel: MyString
+  descHotel: MyText
+  descQuarto: MyText
+  precoHotel: 
+  descPacote: MyText
+  precoPacote: 
+  status: MyString

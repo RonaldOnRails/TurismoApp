@@ -5,19 +5,6 @@ class VendasController < ApplicationController
   # GET /vendas
   # GET /vendas.json
   def index
-
-    @pessoaFisica=Venda.where(:tipo_cliente=>1).order("valor_total DESC")
-    @pessoaJuridica=Venda.where(:tipo_cliente=>0).order("valor_total DESC")
-
-    @servCruzeiro=Venda.where(:services_type=>1).order("valor_total DESC")
-    @servEvento=Venda.where(:services_type=>2).order("valor_total DESC")
-    @servPacote=Venda.where(:services_type=>3).order("valor_total DESC")
-    @servPasseio=Venda.where(:services_type=>4).order("valor_total DESC")
-
-      format.json { render json: @servCruzeiro and @servPasseio and @servPacote and @servEvento
-       and @pessoaFisica and @pessoaJuridica}
-
-
     @vendas = Venda.all
   end
 
@@ -71,20 +58,20 @@ class VendasController < ApplicationController
   end
 
   def relatorio_por_cliente
-    @pessoaFisica=Venda.where(:tipo_cliente=>1).order("valor_total DESC")
-    @pessoaJuridica=Venda.where(:tipo_cliente=>0).order("valor_total DESC")
+    @pessoaFisica=Venda.where("tipo_cliente = ?", 1).order("valor_total DESC").limit(10)
+    @pessoaJuridica=Venda.where("tipo_cliente = ?", 0).order("valor_total DESC").limit(10)
 
-    respond_to do |format|
+    respond_to do |format| #fazer outro json!
       format.html # index.html.erb
       format.json { render json: @pessoaFisica and @pessoaJuridica }
     end
   end
 
   def relatorio_por_servico
-    @servCruzeiro=Venda.where(:services_type=>1).order("valor_total DESC")
-    @servEvento=Venda.where(:services_type=>2).order("valor_total DESC")
-    @servPacote=Venda.where(:services_type=>3).order("valor_total DESC")
-    @servPasseio=Venda.where(:services_type=>4).order("valor_total DESC")
+    @servCruzeiro=Venda.where(:services_type=>1).order("valor_total DESC").limit(10)
+    @servEvento=Venda.where(:services_type=>2).order("valor_total DESC").limit(10)
+    @servPacote=Venda.where(:services_type=>3).order("valor_total DESC").limit(10)
+    @servPasseio=Venda.where(:services_type=>4).order("valor_total DESC").limit(10)
 
     respond_to do |format|
       format.html # index.html.erb

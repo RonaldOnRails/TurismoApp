@@ -7,17 +7,19 @@
   
     <% end %>
 
-     <%= f.input :nome %>
-    <%= f.input :sobrenome %>
-    <%= f.input :dataNasc %>
-    <%= f.select :sexo, :collection => [:Masculino, :Feminino] %>
-    <%= f.input :telefone %>
-    <%= f.input :email %>
-    <%= f.input :cpf, :input_html => {:id=>"cpf"} %>
-    <%= f.input :rg %>
-    <%= f.input :facebook %>
-    <%= f.input :recebe_email %>
-    <%= f.select :status, :collection => [:Ativo, :Inativo, :Desativado, :Cancelado] %>
+    <br/><%= f.input :nome %>
+    <br/><%= f.input :sobrenome %>
+    <br/>*Data de Nascimento
+    <br/><%= f.date_select :dataNasc, :required => true ,:start_year=> (Date.current.year-80) ,:end_year => (Date.current.year-16), :order => [:day, :month, :year],:use_month_names=>["Janeiro" ,"Fevereiro", "Marco", "Abril" ,"Maio", "Junho","Julho", "Agosto","Setembro", "Outubro", "Novembro", "Dezembro" ] %>
+    <br/>Sexo
+    <br/><%= f.select :sexo, :collection => [:Masculino, :Feminino] %>
+    <br/><%= f.input :telefone %>
+    <br/><%= f.input :email %>
+    <br/><%= f.input :cpf, :input_html => {:id=>"cpf"} %>
+    <br/><%= f.input :rg %>
+    <br/><%= f.input :facebook %>
+    <br/><%= f.input :recebe_email %>
+    <br/><%= f.input :status, :collection => [:Ativo, :Inativo, :Desativado, :Cancelado] %>
    
 
     <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">

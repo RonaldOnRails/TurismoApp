@@ -10,8 +10,7 @@
 		</tr>
 		<% @pessoaFisica.each do |cliente| %>
 		<tr>
-			<%@hoho = PessoaFisica.where("id = ?", cliente.pessoa_fisica_id)%>
-			<td headers="nome"><%= @hoho.nome%></td>
+			<td headers="nome"><%= PessoaFisica.find_by_id(cliente.pessoa_fisica_id).nome%></td>
 			<td headers="valor"><%= cliente.valor_total %></td>
 		</tr>
 		<% end %>
@@ -28,7 +27,8 @@
 		</tr>
 		<% @pessoaFisica.each do |cliente| %>
 		<tr>
-			<td headers="nome"><%= PessoaJuridica.where(:id=>cliente.pessoa_juridica_id).nome %></td>
+			<%@var = PessoaJuridica.find_by_id(cliente.pessoa_juridica_id) %>
+			<td headers="nome"><%= @var ? @var.nome : 0%></td>
 			<td headers="valor"><%= cliente.valor_total %></td>
 		</tr>
 		<% end %>

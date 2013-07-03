@@ -9,7 +9,7 @@ class CreateEnderecos < ActiveRecord::Migration
       t.integer :numero
       t.string :complemento
       t.string :bairro
-      t.references :pessoa_fisica
+       t.references :pessoa_fisica
       t.references :pessoa_juridica
       t.references :profile
       t.timestamps

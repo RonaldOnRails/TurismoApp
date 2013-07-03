@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Agencia de Turismo</title>
+    <title>Agencia Turismo</title>
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "jquery.maskedinput" %>  
@@ -11,13 +11,13 @@
   <body>
     <div id="pagina">
       <header class="header-body">
-        <div class="logo">Agencia</div>
+        <div class="logo">Agencia </div>
         <nav class="login-box">
           <% if user_signed_in? %>
             Login <%= current_user.email %>
             <%= link_to "Sair", destroy_user_session_path, :method => :delete %>
           <% else %>
-            <%#= link_to "Sign up", new_user_path %>
+            <%= link_to "Sign up", new_user_path %>
             <%= link_to "Sign in", new_user_session_path %>
           <% end %>
         </nav>
@@ -69,7 +69,8 @@
                 </li>
               </ul>
             </li>
-            <li class='active has-sub'><a href='#'><span>Vendas</span></a>
+            
+           <li class='active has-sub'><a href='#'><span>Vendas</span></a>
                <ul>
                 <li class='has-sub'><%= link_to 'Operacoes', '' %></a>
                   <ul>
@@ -85,8 +86,6 @@
                 </li>
               </ul>
             </li>
-
-
 
             <li class='active has-sub'><a href='#'><span>Funcionários</span></a>
               <ul>
@@ -109,7 +108,7 @@
 
 
       <footer id="footer-body">
-        <div align="center"><sub>SATW – Sistema Agencia de Turismo Web</sub></div>
+        <div align="center"><sub>Felipe Augusto Feichas</sub></div>
       </footer>
 
     </div>

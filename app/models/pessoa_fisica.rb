@@ -1,8 +1,9 @@
 class PessoaFisica < ActiveRecord::Base
      has_one :endereco, :dependent => :destroy
-     has_many :vendas
-
+       has_many :vendas
   accepts_nested_attributes_for :endereco
+  
+
   
   attr_accessible :endereco_attributes,:cpf, :dataNasc, :email, :facebook, :nome, :nroCompra, :recebe_email, :rg, :sexo, :sobrenome
     validates_columns :sexo

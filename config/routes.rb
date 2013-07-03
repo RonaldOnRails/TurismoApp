@@ -1,4 +1,5 @@
-TurismoApp::Application.routes.draw do
+RailsAgenda::Application.routes.draw do
+ 
 
   namespace :servico do
     resources :eventos
@@ -18,31 +19,12 @@ TurismoApp::Application.routes.draw do
   resources :pessoa_fisicas
   resources :pessoa_juridicas
   devise_for :users
-
-  resources :vendas
-  get '/relatorio_por_cliente' => 'vendas#relatorio_por_cliente'
+  
   resources :users
-
-  #get '/vendas/:relatorio_por_cliente', :controller=>"vendas", :action=>"relatorio_por_cliente"
-  #get '/vendas/:relatorio_por_servico', :controller=>"vendas", :action=>"relatorio_por_servico"
-
-  #devise_for :users, :controllers => { :registrations => "registrations" } do
-  #  get "cadastro/:tipo" => 'registrations#new'
-  #  get '/users/sign_out' => 'devise/sessions#destroy'
-  #end
-  #devise_scope :user do
-  #  authenticated :user do
-  #    root :to => "home#index"
-  #  end
-    #root :to => "devise/sessions#new"
-    #get "sign_in", :to => "devise/sessions#new"
-    #get "sign_out", :to => "devise/sessions#destroy"
-  #  get "cadastro/:tipo", :to => 'registrations#new'
-  #end
-
-
-
-  root to: "home#index"
+    resources :vendas
+  get '/relatorio_por_cliente' => 'vendas#relatorio_por_cliente'
+  
+   root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
