@@ -23,6 +23,7 @@ RailsAgenda::Application.routes.draw do
   resources :users
     resources :vendas
   get '/relatorio_por_cliente' => 'vendas#relatorio_por_cliente'
+  get '/relatorio_por_servico' => 'vendas#relatorio_por_servico'
   
    root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.

@@ -25,6 +25,11 @@ gem "omniauth", "~> 1.0.0"
 gem "omniauth-oauth2", "~> 1.0.0"
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'enum_column3'
+#gem 'gchart'
+gem "googlecharts", :require => "gchart"
+##gem 'mattetti-googlecharts'
+##gem 'googlecharts'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

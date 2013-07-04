@@ -1,7 +1,7 @@
 class VendasController < ApplicationController
   before_action :set_venda, only: [:show, :edit, :update, :destroy]
   #before_filter :authenticate_user!#  ,  :except => [:new, :create]
-
+require 'gchart'
   # GET /vendas
   # GET /vendas.json
   def index
@@ -58,20 +58,21 @@ class VendasController < ApplicationController
   end
 
   def relatorio_por_cliente
-    @pessoaFisica=Venda.where("tipo_cliente = ?", 1).order("valor_total DESC").limit(10)
-    @pessoaJuridica=Venda.where("tipo_cliente = ?", 0).order("valor_total DESC").limit(10)
+    @vendaFisica=Venda.where("tipo_cliente = ?", 1).limit(4)
+    @vendaJuridica=Venda.where("tipo_cliente = ?", 0)
+    #@chart1 = Gchart.pie(:data => [20,10,15,5,50], :title => 'SDRuby Fu level', :size => '400x200', :labels => ['matt', 'rob', 'patrick', 'ryan', 'jordan'])
 
     respond_to do |format| #fazer outro json!
       format.html # index.html.erb
-      format.json { render json: @pessoaFisica and @pessoaJuridica }
+      format.json { render json: @vendaFisica and @vendaJuridica and @line_chart }
     end
   end
 
   def relatorio_por_servico
-    @servCruzeiro=Venda.where(:services_type=>1).order("valor_total DESC").limit(10)
-    @servEvento=Venda.where(:services_type=>2).order("valor_total DESC").limit(10)
-    @servPacote=Venda.where(:services_type=>3).order("valor_total DESC").limit(10)
-    @servPasseio=Venda.where(:services_type=>4).order("valor_total DESC").limit(10)
+    @servCruzeiro=Venda.where(:services_type=>1).order("valor_total DESC")
+    @servEvento=Venda.where(:services_type=>2).order("valor_total DESC")
+    @servPacote=Venda.where(:services_type=>3).order("valor_total DESC")
+    @servPasseio=Venda.where(:services_type=>4).order("valor_total DESC")
 
     respond_to do |format|
       format.html # index.html.erb
