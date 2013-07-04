@@ -1,8 +1,8 @@
 
-<div class="container">
-	<div class="bloco1">
+
+
 		Clientes do tipo Pessoa Fisica:
-		<table border="1" summary="Esta tabela mostra os nomes dos clientes do tipo Pessoa Fisica com seus respectivos gastos.">
+		<table border="2" summary="Esta tabela mostra os nomes dos clientes do tipo Pessoa Fisica com seus respectivos gastos.">
 			<tr>
 				<th id="nome">Nome</th>
 				<th id="valor">Valor</th>
@@ -11,16 +11,17 @@
 			<tr>
 				<%aux1=PessoaFisica.find_by_id(cliente.pessoa_fisica_id)
 				if aux1 && aux1.nome%>
-				<td headers="nome"><%= aux1.nome%></td>
-				<td headers="valor"><%= cliente.valor_total %></td>
+					<td headers="nome"><%= aux1.nome%></td>
+					<td headers="valor"><%= cliente.valor_total %></td>
+				<% end %>
 			</tr>
 			<% end %>
 		</table>
-	</div>
+
 	<hr>
-	<div class="bloco2"></div>
+
 		Clientes do tipo Pessoa Juridica:
-		<table border="1" summary="Esta tabela mostra os nomes dos clientes do tipo Pessoa Juridica com seus respectivos gastos.">
+		<table border="2" summary="Esta tabela mostra os nomes dos clientes do tipo Pessoa Juridica com seus respectivos gastos.">
 			<tr>
 				<th id="nome">Nome</th>
 				<th id="valor">Valor</th>
@@ -35,39 +36,13 @@
 			</tr>
 			<% end %>
 		</table>
-	</div>
-	<hr>
-	<div class="bloco-charts">
 
-	</div>
-</div>
-<%%>
-<html>
-  <head>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+	<img src ="<%=Gchart.line(:data => [300, 100, 30, 200, 100], :axis_with_labels => 'x,r', :axis_labels => ['Jan|Feb|Mar|Apr|May', '2005|2006|2007']) %>"/>
 
-        var options = {
-          title: 'Rellllllatorio'
-        };
+	<img src ="<%=Gchart.pie_3d(:title => 'Grafico de Pizza 3d', :size => '400x200', :data => [10, 45, 45], :labels => ["DHH", "Rob", "Matt"] )%>"/>
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-  <body>
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-  </body>
-</html>
+	<img src ="<%=Gchart.pie_3d(:data => [20,10,15,5,120], :title => 'SDRuby Fu level', :size => '400x200', :labels => ['matt', 'rob', 'patrick', 'ryan', 'xixixi'])%>"/>
+
+	<img src ="<%=Gchart.bar( :data => [[1,2,4,67,100,4,234],[45,23,67,12,67,3, 250]], :title => 'SD Ruby Fu level', :legend => ['lalalala','patrick'], :bg => {:color => '76A4FB', :type => 'gradient'}, :bar_colors => 'ff0000,00ff00')%>"/>
+
+	<img src ="<%=Gchart.line( :data => [17, 17, 11, 8, 2], :axis_with_labels => ['x', 'y'], :axis_labels => [['J', 'F', 'M', 'A', 'M']], :axis_range => [nil, [2,17,5]])%>"/>

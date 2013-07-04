@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+source 'http://gems.github.com/'
 
 
 
@@ -26,7 +26,7 @@ gem "omniauth-oauth2", "~> 1.0.0"
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'enum_column3'
 #gem 'gchart'
-gem "googlecharts", :require => "gchart"
+gem 'googlecharts'
 ##gem 'mattetti-googlecharts'
 ##gem 'googlecharts'
 
