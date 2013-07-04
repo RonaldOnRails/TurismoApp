@@ -17,7 +17,7 @@
   <tbody>
     <% @vendas.each do |venda| %>
       <tr>
-        <td><%= venda.data_venda %></td>
+        <td><%= venda.data_venda.to_s_br %></td>
         <td><%= venda.forma_pagamento %></td>
         <td><%= venda.status %></td>
         <td><%= venda.tipo_cliente %></td>

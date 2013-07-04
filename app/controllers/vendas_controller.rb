@@ -58,25 +58,41 @@ require 'gchart'
   end
 
   def relatorio_por_cliente
-    @vendaFisica=Venda.where("tipo_cliente = ?", 1).limit(4)
-    @vendaJuridica=Venda.where("tipo_cliente = ?", 0)
-    #@chart1 = Gchart.pie(:data => [20,10,15,5,50], :title => 'SDRuby Fu level', :size => '400x200', :labels => ['matt', 'rob', 'patrick', 'ryan', 'jordan'])
+    #Relatorio Tabelas
+    @vendaFisica=Venda.where(:tipo_cliente => 1)
+    @vendaJuridica=Venda.where(:tipo_cliente => 0)
+    
+    #Relatorio Graficos
+    @nroFis=Venda.where(:tipo_cliente=>1).count
+    @nroJur=Venda.where(:tipo_cliente=>0).count
 
-    respond_to do |format| #fazer outro json!
-      format.html # index.html.erb
-      format.json { render json: @vendaFisica and @vendaJuridica and @line_chart }
+    @pizza=Gchart.pie_3d(:data => [@nroFis,@nroJur], :title => 'Vendas por Tipo de Cliente', :size => '400x200', :labels => ['Fisica', 'Juridica'])
+
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @vendaFisica and @vendaJuridica and @pizza }
     end
   end
 
   def relatorio_por_servico
-    @servCruzeiro=Venda.where(:services_type=>1).order("valor_total DESC")
-    @servEvento=Venda.where(:services_type=>2).order("valor_total DESC")
-    @servPacote=Venda.where(:services_type=>3).order("valor_total DESC")
-    @servPasseio=Venda.where(:services_type=>4).order("valor_total DESC")
+    @servCruzeiro=Venda.where(:services_type=>1)
+    @servEvento=Venda.where(:services_type=>2)
+    @servPacote=Venda.where(:services_type=>3)
+    @servPasseio=Venda.where(:services_type=>4)
+
+
+    @nroCruzeiro=Venda.where(:services_type=>1).count
+    @nroEvento=Venda.where(:services_type=>2).count
+    @nroPacote=Venda.where(:services_type=>3).count
+    @nroPasseio=Venda.where(:services_type=>4).count
+
+    @pizza=Gchart.pie_3d(:data => [@nroCruzeiro,@nroEvento,@nroPacote,@nroPasseio], :title => 'Vendas por Tipo de Cliente', :size => '400x200', :labels => ['Cruzeiro', 'Evento', 'Pacote', 'Passeio'])
+
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @servCruzeiro and @servPasseio and @servPacote and @servEvento}
+      format.json { render json: @servCruzeiro and @servPasseio and @servPacote and @servEvento }
     end
   end
 
