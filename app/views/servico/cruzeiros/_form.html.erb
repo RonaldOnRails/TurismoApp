@@ -1,19 +1,61 @@
 <%= simple_form_for(@servico_cruzeiro) do |f| %>
   <%= f.error_notification %>
 
-  <div class="inputs">
-    <%= f.input :dataInicio %>
-    <%= f.input :dataRetorno %>
-    <%= f.input :trajetoria %>
-    <%= f.input :localSaida %>
-    <%= f.input :nomeNavio %>
-    <%= f.input :empresaNavio %>
-    <%= f.input :empresaCnpj, :input_html => {:id=>"cnpj"} %>
-    <%= f.input :descQuarto %>
-    <%= f.input :precoQuarto %>
-    <%= f.input :descCruzeiro %>
-    <%= f.input :precoTotal %>
-    <%= f.input :nroQuartos %>
+<div class="inputs">
+  <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
+    <table align="center" height="15" cellspacing="20"  >
+      <tr>
+        <tr>
+          <td align="center" bgcolor="#ECECEC" height="25" colspan="4" >
+            <span style="font-weight: bold;">Dados de inserção de Serviço: Cruzeiro</span></td>
+        </tr>
+        <tr>
+          <td><%= f.input :dataInicio, label:"Data de Início" %></td>
+          <td><%= f.input :dataRetorno, label:"Data de Retorno" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :trajetoria, label:"Trajetória" %></td>
+          <td><%= f.input :localSaida, label:"Local de Saída" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :nomeNavio, label:"Nome do navio" %></td>
+          <td><%= f.input :empresaNavio, label:"Empresa do navio" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :empresaCnpj, :input_html => {:id=>"cnpj"}, label:"CNPJ" %></td>
+        </tr>
+        
+        </table>
+    </div>
+  
+  
+  <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
+    <table align="center" height="15" cellspacing="20"  >
+      <tr>
+        <tr>
+          <td align="center" bgcolor="#ECECEC" height="25" colspan="4" >
+            <span style="font-weight: bold;">Dados da viagem</span></td>
+        </tr>
+        <tr>
+          <td><%= f.input :descQuarto, label:"Descr do Quarto" %></td>
+        </tr>
+        <tr>
+          <td align="right"><%= f.input :precoQuarto, label:"Preço do quarto" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :descCruzeiro, label:"Descr. Cruzeiro" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :precoTotal, label:"Preço Total" %></td>
+          <td><%= f.input :nroQuartos, label:"Número de quartos" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :nomeNavio, label:"Nome do navio" %></td>
+          <td><%= f.input :empresaNavio, label:"Empresa do navio" %></td>
+        </tr>
+        </table>
+    </div>
+
     <%= f.input :internacional %>
     <%= f.select :status, :collection => [:Ativo, :Inativo, :Andamento, :Parado, :Concluido] %>
   </div>

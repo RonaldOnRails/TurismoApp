@@ -2,20 +2,52 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :dataInicio %>
-    <%= f.input :dataRetorno %>
-    <%= f.input :destino %>
-    <%= f.input :localSaida %>
-    <%= f.input :nomeTrans %>
-    <%= f.input :veiculo %>
-    <%= f.input :cnpjTrans, :input_html => {:id=>"cnpj"}%>
-    <%= f.input :precoTrans %>
-    <%= f.input :descEvento %>
-    <%= f.input :nomeEvento %>
-    <%= f.input :precoConvite %>
-    <%= f.input :nroLugares %>
-    <%= f.input :precoTotal %>
-    <%= f.input :internacional %>
+    
+    <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
+    <table align="center" height="15" cellspacing="20"  >
+      <tr>
+        <tr>
+          <td align="center" bgcolor="#ECECEC" height="25" colspan="4" >
+            <span style="font-weight: bold;">Dados de inserção de Eventos</span></td>
+        </tr>
+        <tr>
+          <td><%= f.input :dataInicio, label:"Data de Início" %></td>
+          <td><%= f.input :dataRetorno, label:"Data de Retorno" %></td>
+        </tr>
+        
+        <tr>
+          <td><%= f.input :destino %></td>
+          <td><%= f.input :localSaida, label:"Local de Saída" %></td>
+        </tr>
+        
+        <tr>
+          <td><%= f.input :nomeTrans, label:"Nome do Transporte" %></td>
+          <td><%= f.input :veiculo, label:"Veículo" %></td>
+        </tr>
+        
+        <tr>
+          <td><%= f.input :cnpjTrans, :input_html => {:id=>"cnpj"}, label:"CNPJ Transportadora" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :precoTrans, label:"Preço do Transporte", label:"Preço Transporte" %></td>
+          <td><%= f.input :nomeEvento %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :descEvento %></td>
+          <td><%= f.input :precoConvite %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :nroLugares %></td>
+          <td><%= f.input :precoTotal %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :internacional %></td>
+          <td></td>
+        </tr>
+        
+        </table>
+    </div>
+    
     <%= f.select :status, :collection => [:Ativo, :Inativo, :Andamento, :Parado, :Concluido] %>
 
   </div>

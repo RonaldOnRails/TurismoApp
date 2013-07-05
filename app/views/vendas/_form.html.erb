@@ -38,31 +38,41 @@
     <%= f.number_field :valor_total %>
   </div>
 <br>
-  <div id="services_type" class="field" onchange="showDivServico()">
+  <div id="services_type" class="field" onclick="showDivServico()">
      <%= f.label :services_type, "Tipo de Servico:" %><br>
      <%= f.radio_button :services_type, 1%>Cruzeiro<br>
      <%= f.radio_button :services_type, 2%>Evento<br>
      <%= f.radio_button :services_type, 3%>Pacote<br>
      <%= f.radio_button :services_type, 4%>Passeio<br>
   </div>
-
     <div class="field">
-    <div id="cruzeiro" style="display:none">
-      <b>Cruzeiros:<b/>
-      <%= f.collection_select :services_id, Servico::Cruzeiro.all, :id, :nomeNavio, :prompt => true %>
-    </div>
+        <div id="cruzeiro" style="display:none">
+          <b>Cruzeiros:<b/>
+          <%= f.collection_select :services_id, Servico::Cruzeiro.all, :id, :nomeNavio, :prompt => true %>
+        </div>
+
+
+
     <div id="evento" style="display:none">
       <b>Eventos:<b/>
       <%= f.collection_select :services_id, Servico::Evento.all, :id, :nomeEvento, :prompt => true %>
     </div>
+
+
+
     <div id="pacote" style="display:none">
       <b>Pacotes:<b/>
       <%= f.collection_select :services_id, Servico::Pacote.all, :id, :nomeHotel, :prompt => true %>
     </div>
+
+
+    <% if @venda.services_type = 4 %>
     <div id="passeio" style="display:none">
       <b>Passeios:<b/>
       <%= f.collection_select :services_id, Servico::Passeio.all, :id, :destino, :prompt => true %>
     </div>
+    <%end%>
+
   </div>
 <br>
   <div class="field">

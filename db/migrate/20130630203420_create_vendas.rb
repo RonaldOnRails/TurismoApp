@@ -9,7 +9,7 @@ class CreateVendas < ActiveRecord::Migration
       t.boolean :tipo_cliente
       t.datetime :data_venda
       t.integer :forma_pagamento
-      t.integer :status
+      t.column :status, :enum, :limit => [:Ativo, :Inativo, :Desativado, :Cancelado], :default => :Ativo
       t.float :valor_total
 
       t.timestamps

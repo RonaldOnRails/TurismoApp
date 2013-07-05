@@ -7,50 +7,63 @@
   
     <% end %>
 
-    <br/><%= f.input :nome %>
-    <br/><%= f.input :sobrenome %>
-    <br/>*Data de Nascimento
-    <br/><%= f.date_select :dataNasc, :required => true ,:start_year=> (Date.current.year-80) ,:end_year => (Date.current.year-16), :order => [:day, :month, :year],:use_month_names=>["Janeiro" ,"Fevereiro", "Marco", "Abril" ,"Maio", "Junho","Julho", "Agosto","Setembro", "Outubro", "Novembro", "Dezembro" ] %>
-    <br/>Sexo
-    <br/><%= f.select :sexo, :collection => [:Masculino, :Feminino] %>
-    <br/><%= f.input :telefone %>
-    <br/><%= f.input :email %>
-    <br/><%= f.input :cpf, :input_html => {:id=>"cpf"} %>
-    <br/><%= f.input :rg %>
-    <br/><%= f.input :facebook %>
-    <br/><%= f.input :recebe_email %>
-    <br/><%= f.input :status, :collection => [:Ativo, :Inativo, :Desativado, :Cancelado] %>
-   
-
     <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
+      <table align="center" height="15" cellspacing="20"  >
+        <tr>
+        <tr>
+          <td align="center" bgcolor="#ECECEC" height="25" colspan="4" ><span style="font-weight: bold;">Dados Pessoais</span></td>
+        </tr>
+        <tr>
+          <td><%= f.input :nome %></td>
+          <td><%= f.input :sobrenome %></td>
+          <td><%= f.date_select :dataNasc, :required => true ,:start_year=> (Date.current.year-80) ,:end_year => (Date.current.year-16), :order => [:day, :month, :year],:use_month_names=>["Janeiro" ,"Fevereiro", "Marco", "Abril" ,"Maio", "Junho","Julho", "Agosto","Setembro", "Outubro", "Novembro", "Dezembro" ] %></td>
+        </tr>
+        <tr>
+          <td><%= f.select :sexo, :collection => [:Masculino, :Feminino] %></td>
+          <td><%= f.input :telefone %></td>
+          <td><%= f.input :email %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :cpf, :input_html => {:id=>"cpf"} %></td>
+          <td><%= f.input :rg %></td>
+          <td><%= f.input :facebook %></td>
+        </tr>
+         </table>
+    </div>
+
+        
+        
+        
+        <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
       <table align="center" height="15" cellspacing="20"  >
         <tr>
         <tr>
           <td align="center" bgcolor="#ECECEC" height="25" colspan="4" ><span style="font-weight: bold;">Endereço</span></td>
         </tr>
-        <tr >
+        <tr>
           <%= f.simple_fields_for :endereco do |f2| %>
-            <td><%= f2.input :cep, :as=> :string, :input_html => {:id=>"cep",  :onBlur=> "getEndereco()"}%></td>
+          <td><%= f2.input :cep, :as=> :string, :input_html => {:id=>"cep",  :onBlur=> "getEndereco()"}%></td>
             <td> <%= f2.input :pais, :input_html => {:id=>"pais", :readonly=>"true"}  %></td>
             <td> <%= f2.input :estado, :input_html => {:id=>"estado", :readonly=>"true"} %></td>
             <td> <%= f2.input :cidade, :input_html => {:id=>"cidade", :readonly=>"true"}  %></td>
-          </tr>
-          <tr>
-            <td><%= f2.input :endereco, :input_html => {:id=>"endereco", :readonly=>"true"}  %></td>
+        </tr>
+        <tr>
+          <td><%= f2.input :endereco, :input_html => {:id=>"endereco", :readonly=>"true"}  %></td>
             <td><%= f2.input :numero, :as=> :string %></td>
             <td><%= f2.input :complemento %></td>
             <td><%= f2.input :bairro, :input_html => {:id=>"bairro", :readonly=>"true"} %></td>
           <%end%>
         </tr>
-        </tr>
+       
       </table>
     </div>
 
-   
-    <%= f.input :recebe_email %><br />
-
+   <br />
+ <tr>
+          <td align="left"><%= f.select :status, :collection => [:Ativo, :Inativo, :Desativado, :Cancelado] %></td>
+          <td align="right"><%= f.input :recebe_email %></td>
     <div id="Sub">
-      <%= f.submit "create"%>
+      <%= f.submit "Criar"%>
     </div>
   <% end %>
 </section>

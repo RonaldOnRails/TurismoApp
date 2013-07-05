@@ -3,17 +3,30 @@
     <% if @pessoa_juridica.errors.any? %>
         <h2>*Campos Obrigatorios</h2>
           <% end %>
-        <%= f.input :nome %>
-    <%= f.input :cnpj, :input_html => {:id=>"cnpj"} %>
-    <%= f.input :email %>
-    <%= f.input :nomeResp %>
-    <%= f.input :cargo %>
-    <%= f.input :cpf, :input_html => {:id=>"cpf"} %>
-    <%= f.input :telefone %>
-    <%= f.input :observacao %>
-    <%= f.input :recebe_email %>
-    <%= f.select :status, :collection => [:Ativo, :Inativo, :Desativado, :Cancelado] %>
-  
+        
+<div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
+      <table align="center" height="15" cellspacing="20"  >
+        <tr>
+        <tr>
+          <td align="center" bgcolor="#ECECEC" height="25" colspan="4" >
+            <span style="font-weight: bold;">Dados Pessoa Jurídica</span></td>
+        </tr>
+        <tr>
+          <td><%= f.input :nome, label:"Razão Social" %></td>
+          <td><%= f.input :cnpj, :input_html => {:id=>"cnpj"} %></td>
+          <td><%= f.input :email, label:"E-mail de contato" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :nomeResp, label:"Nome do Responsável" %></td>
+          <td><%= f.input :cargo, label:"Cargo" %></td>
+          <td><%= f.input :cpf, :input_html => {:id=>"cpf"}, label:"CPF" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :telefone %></td>
+        </tr>
+        </table>
+    </div>
+
     <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
       <table align="center" height="15" cellspacing="20"  >
         <tr>
@@ -34,12 +47,15 @@
             <td><%= f2.input :bairro, :input_html => {:id=>"bairro", :readonly=>"true"} %></td>
           <%end%>
         </tr>
+        <tr>
+          <td><%= f.input :observacao %></td>
         </tr>
       </table>
     </div>
 
    
     <%= f.input :recebe_email %><br />
+    <%= f.select :status, :collection => [:Ativo, :Inativo, :Desativado, :Cancelado] %>
 
     <div id="Sub">
       <%= f.submit "create"%>

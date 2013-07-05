@@ -6,13 +6,13 @@ class PessoaFisica < ActiveRecord::Base
 
   
   attr_accessible :endereco_attributes,:cpf, :dataNasc, :email, :facebook, :nome, :nroCompra, :recebe_email, :rg, :sexo, :sobrenome
-    #validates_columns :sexo
+    validates_columns :sexo
   
-  #validates_presence_of :nome, message: "deve ser preenchido"
-  #validates_presence_of :sobrenome, message: "deve ser preenchido"
-  #validates_uniqueness_of :rg, :message=>"Ja existe"
+  validates_presence_of :nome, message: "deve ser preenchido"
+  validates_presence_of :sobrenome, message: "deve ser preenchido"
+  validates_uniqueness_of :rg, :message=>"Ja existe"
      
-  #validates_presence_of :cpf, :message=>"deve ser preenchido"
+  validates_presence_of :cpf, :message=>"deve ser preenchido"
   #with_options :allow_blank => true do |v|
     #v.validates_length_of :cpf, :is => 14
     #v.validates_uniqueness_of :cpf, :message=>"Ja existe"  

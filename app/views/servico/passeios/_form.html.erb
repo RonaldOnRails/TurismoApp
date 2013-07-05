@@ -2,18 +2,40 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :dataInicio %>
-    <%= f.input :dataRetorno %>
-    <%= f.input :destino %>
-    <%= f.input :localSaida %>
-    <%= f.input :nomeTrans %>
-    <%= f.input :veiculo %>
-    <%= f.input :cnpjTrans %>
-    <%= f.input :precoTrans %>
-    <%= f.input :descPasseio %>
-    <%= f.input :precoTotal %>
+    <div style="border: #CCCCCC 1px solid; width: auto;  margin-left:auto; margin-right:auto; padding:5px; margin-top:25px;">
+    <table align="center" height="15" cellspacing="20"  >
+      <tr>
+        <tr>
+          <td align="center" bgcolor="#ECECEC" height="25" colspan="4" >
+            <span style="font-weight: bold;">Dados de inserção de Serviço: Passeio</span></td>
+        </tr>
+        <tr>
+          <td><%= f.input :dataInicio %></td>
+          <td><%= f.input :dataRetorno %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :nomeTrans, label:"Nome Transp." %></td>
+          <td><%= f.input :veiculo %></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        <tr>
+          <td><%= f.input :cnpjTrans %></td>
+          <td><%= f.input :precoTrans, label:"Preço Transporta" %></td>
+        </tr>
+        <tr>
+          <td><%= f.input :descPasseio %></td>
+          <td><%= f.input :precoTotal %></td>
+        </tr>
+        <tr>
+          
+        </tr>
+        
+    </table>
+      </div>
     <%= f.input :internacional %>
-   <%= f.select :status, :collection => [:Ativo, :Inativo, :Andamento, :Parado, :Concluido] %>
+    <%= f.select :status, :collection => [:Ativo, :Inativo, :Andamento, :Parado, :Concluido] %>
 
   </div>
 

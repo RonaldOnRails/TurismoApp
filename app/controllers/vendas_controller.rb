@@ -26,12 +26,9 @@ require 'gchart'
   # POST /vendas.json
   def create
     @venda = Venda.new(venda_params)
-    #@venda.user_id=current_user.id
-    if @venda.pessoa_fisica_id
-      @venda.tipo_cliente=1
-    else
-      @venda.tipo_cliente=0
-    end
+    @venda.services_id = params[:venda]["services_id"]
+    @venda.user_id=current_user.id
+    
     respond_to do |format|
       if @venda.save
         format.html { redirect_to @venda, notice: 'Venda was successfully created.' }
@@ -63,15 +60,21 @@ require 'gchart'
     @vendaJuridica=Venda.where(:tipo_cliente => 0)
     
     #Relatorio Graficos
+  #pizza
     @nroFis=Venda.where(:tipo_cliente=>1).count
     @nroJur=Venda.where(:tipo_cliente=>0).count
+    
+    @pizza=Gchart.pie_3d(:data => [@nroFis,@nroJur], :title => 'Vendas por Tipo de Cliente', :size => '400x200', :labels => ["Fisica - #{@nroFis}", "Juridica - #{@nroJur}"])
+    
+  #barras
+    @valorFis=Venda.where(:tipo_cliente=>1).sum("valor_total")
+    @valorJur=Venda.where(:tipo_cliente=>0).sum("valor_total")
 
-    @pizza=Gchart.pie_3d(:data => [@nroFis,@nroJur], :title => 'Vendas por Tipo de Cliente', :size => '400x200', :labels => ['Fisica', 'Juridica'])
-
+    @barras=Gchart.bar(:data => [[@valorFis], [@valorJur]], :bar_colors => ['FF0000', '00FF00'],:legend => ["Pessoa Fisica - #{@valorFis}", "Pessoa Juridica - #{@valorJur}"])
 
     respond_to do |format|
       format.html
-      format.json { render json: @vendaFisica and @vendaJuridica and @pizza }
+      format.json { render json: @vendaFisica and @vendaJuridica and @pizza and @barras}
     end
   end
 
@@ -81,7 +84,8 @@ require 'gchart'
     @servPacote=Venda.where(:services_type=>3)
     @servPasseio=Venda.where(:services_type=>4)
 
-
+    #Relatorios Graficos
+  #pizza
     @nroCruzeiro=Venda.where(:services_type=>1).count
     @nroEvento=Venda.where(:services_type=>2).count
     @nroPacote=Venda.where(:services_type=>3).count
@@ -89,10 +93,17 @@ require 'gchart'
 
     @pizza=Gchart.pie_3d(:data => [@nroCruzeiro,@nroEvento,@nroPacote,@nroPasseio], :title => 'Vendas por Tipo de Cliente', :size => '400x200', :labels => ['Cruzeiro', 'Evento', 'Pacote', 'Passeio'])
 
+  #barras
+    @sservCruzeiro=Venda.where(:services_type=>1).sum("valor_total")
+    @sservEvento=Venda.where(:services_type=>2).sum("valor_total")
+    @sservPacote=Venda.where(:services_type=>3).sum("valor_total")
+    @sservPasseio=Venda.where(:services_type=>4).sum("valor_total")
+
+    @barra=Gchart.bar(:data => [[@sservCruzeiro], [@sservEvento], [@sservPacote], [@sservPasseio]], :bar_colors => ['FF0000', '00FF00', '88AA77', '222FA2'],:legend => ["Cruzeiro - #{@sservCruzeiro}", "Evento - #{@sservEvento}", "Pacote - #{@sservPacote}", "Passeio - #{@sservPasseio}"])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @servCruzeiro and @servPasseio and @servPacote and @servEvento }
+      format.json { render json: @servCruzeiro and @servPasseio and @servPacote and @servEvento and @pizza and @barra}
     end
   end
 
@@ -118,6 +129,6 @@ require 'gchart'
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def venda_params
-      params.require(:venda).permit(:data_venda, :forma_pagamento, :status, :tipo_cliente, :valor_total, :pessoa_fisica_id, :pessoa_juridica_id, :user_id, :service_id)
+      params.require(:venda).permit(:data_venda, :forma_pagamento, :status, :tipo_cliente, :valor_total, :pessoa_fisica_id, :pessoa_juridica_id, :user_id, :services_id, :services_type)
     end
 end

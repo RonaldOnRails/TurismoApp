@@ -1,5 +1,4 @@
-
-
+<h1>Relatórios de Clientes</h1>
 
 		Clientes do tipo Pessoa Fisica:
 		<table border="1" summary="Esta tabela mostra os nomes dos clientes do tipo Pessoa Fisica com seus respectivos gastos.">
@@ -36,15 +35,9 @@
 			</tr>
 			<% end %>
 		</table>
-<hr>
-	<img src ="<%=Gchart.line(:data => [300, 100, 30, 200, 100], :axis_with_labels => 'x,r', :axis_labels => ['Jan|Feb|Mar|Apr|May', '2005|2006|2007']) %>"/>
-
-	<img src ="<%=Gchart.pie_3d(:title => 'Grafico de Pizza 3d', :size => '400x200', :data => [10, 45, 45], :labels => ["DHH", "Rob", "Matt"] )%>"/>
-
-	<img src ="<%=Gchart.pie_3d(:data => [20,10,15,5,120], :title => 'SDRuby Fu level', :size => '400x200', :labels => ['matt', 'rob', 'patrick', 'ryan', 'xixixi'])%>"/>
-
-	<img src ="<%=Gchart.bar( :data => [[1,2,4,67,100,4,234],[45,23,67,12,67,3, 250]], :title => 'SD Ruby Fu level', :legend => ['lalalala','patrick'], :bg => {:color => '76A4FB', :type => 'gradient'}, :bar_colors => 'ff0000,00ff00')%>"/>
-
-	<img src ="<%=Gchart.line( :data => [17, 17, 11, 8, 2], :axis_with_labels => ['x', 'y'], :axis_labels => [['J', 'F', 'M', 'A', 'M']], :axis_range => [nil, [2,17,5]])%>"/>
-
+	<hr>
+	Grafico de Pizza:
 	<img src ="<%=@pizza%>"/>
+	<hr>
+	Grafico de Barras:
+	<img src ="<%=@barras%>"/>
